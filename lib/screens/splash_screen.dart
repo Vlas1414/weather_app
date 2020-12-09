@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'package:weather_example/cubit/weather_cubit.dart';
 import 'package:weather_example/screens/weather_forecast_screen.dart';
@@ -17,17 +18,22 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void getLocationData() async {
     try {
-      WeatherCubit _weatherCubit;
-      WeatherRepository _weatherRepository = WeatherRepository();
-      _weatherCubit = WeatherCubit(_weatherRepository);
-      _weatherCubit.fetchWeather();
+      Timer(Duration.zero, () {
+        String currentLocale =
+            EasyLocalization.of(context).locale.toString().split("_")[0];
 
-      Timer(Duration(seconds: 3), () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => WeatherForecastScreen(_weatherCubit)),
-        );
+        WeatherCubit _weatherCubit;
+        WeatherRepository _weatherRepository = WeatherRepository(currentLocale);
+        _weatherCubit = WeatherCubit(_weatherRepository);
+        _weatherCubit.fetchWeather();
+
+        Timer(Duration(seconds: 3), () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => WeatherForecastScreen(_weatherCubit)),
+          );
+        });
       });
     } catch (e) {
       print('getLocationData error $e');

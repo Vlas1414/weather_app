@@ -23,8 +23,16 @@ class WeatherCubit extends Cubit<WeatherState> {
         loadedWeatherLocation: _loadedWeatherLocation,
       ));
     } catch (e) {
+      final WeatherForecast _loadedWeather =
+          await weatherRepository.getWeatherForecastFromStorage();
+      final WeatherForecastLocation _loadedWeatherLocation =
+          await weatherRepository.getWeatherCityNameFromStorage();
+      emit(WeatherLoadedFromStorageState(
+        loadedWeather: _loadedWeather,
+        loadedWeatherLocation: _loadedWeatherLocation,
+      ));
       print('$e');
-      emit(WeatherErrorState());
+      //emit(WeatherErrorState());
     }
   }
 }

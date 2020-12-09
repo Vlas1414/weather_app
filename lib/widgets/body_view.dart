@@ -26,22 +26,39 @@ class BodyView extends StatelessWidget {
         ),
         child:
             BlocBuilder<WeatherCubit, WeatherState>(builder: (context, state) {
-          if (state is WeatherLoadedState) {
+          Widget listWidget(loadedWeather) {
             return ListView(
               physics: BouncingScrollPhysics(),
               children: [
-                Column(children: [
-                  SizedBox(height: 50),
-                  TempView(snapshot: state.loadedWeather),
-                  SizedBox(height: 50),
-                  DetailView(snapshot: state.loadedWeather),
-                  SizedBox(height: 50),
-                  BottomListView(
-                      snapshot: state.loadedWeather,
-                      typeElements: dropdownValue)
-                ]),
+                SizedBox(height: 50),
+                TempView(snapshot: loadedWeather),
+                SizedBox(height: 50),
+                DetailView(snapshot: loadedWeather),
+                SizedBox(height: 50),
+                BottomListView(
+                    snapshot: loadedWeather, typeElements: dropdownValue)
               ],
             );
+          }
+
+          if (state is WeatherLoadedState) {
+            return listWidget(state.loadedWeather);
+          }
+          if (state is WeatherLoadedFromStorageState) {
+            final snackBar = SnackBar(
+                backgroundColor: Colors.red,
+                content:
+                    Text('There is no connection. Previous result loaded!'));
+
+            // Scaffold.of(context).showSnackBar(snackBar);
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Scaffold.of(context)
+                // ignore: deprecated_member_use
+                ..hideCurrentSnackBar()
+                // ignore: deprecated_member_use
+                ..showSnackBar(snackBar);
+            });
+            return listWidget(state.loadedWeather);
           }
           return SpinKitThreeBounce(
             color: Colors.white,

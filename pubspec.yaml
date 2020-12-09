@@ -33,6 +33,8 @@ dependencies:
   font_awesome_flutter: ^8.10.0
   geolocator: ^6.1.11
   flutter_bloc: ^6.1.1
+  shared_preferences: ^0.5.12+4
+  easy_localization: ^2.3.3
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +49,10 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/lang/en-EN.json
+    - assets/lang/ru-RU.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

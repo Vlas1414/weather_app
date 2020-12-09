@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:weather_example/cubit/weather_cubit.dart';
 import 'package:weather_example/utilities/custom_colors.dart';
 import 'package:weather_example/widgets/body_view.dart';
@@ -13,8 +14,8 @@ class WeatherForecastScreen extends StatefulWidget {
 }
 
 class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
-  String dropdownValue = 'Days';
-  List<String> itemsFilter = ['Days', 'Hours'];
+  String dropdownValue = 'days';
+  List<String> itemsFilter = ['days', 'hours'];
 
   @override
   void initState() {
@@ -49,7 +50,7 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                       return Padding(
                         padding: EdgeInsets.only(top: 14),
                         child: Text(
-                          item,
+                          item.tr(),
                           style: TextStyle(color: Colors.white),
                         ),
                       );
@@ -61,7 +62,7 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(
-                          value,
+                          value.tr(),
                           style: TextStyle(color: Colors.black),
                         ),
                       );

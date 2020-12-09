@@ -1,8 +1,11 @@
 import 'package:geolocator/geolocator.dart';
 
 class Location {
-  double latitude;
-  double longitude;
+  static const double latitudeKiev = 50.434341;
+  static const double longitudeKiev = 30.527756;
+
+  double latitude = latitudeKiev;
+  double longitude = longitudeKiev;
 
   Future<void> getCurrentLocation() async {
     try {
@@ -11,7 +14,7 @@ class Location {
       latitude = position.latitude;
       longitude = position.longitude;
     } catch (e) {
-      throw 'Something goes wrong: $e';
+      print('Something goes wrong with location: $e');
     }
   }
 }

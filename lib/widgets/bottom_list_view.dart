@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 import 'package:weather_example/models/weather_forecast.dart';
 import 'package:weather_example/widgets/forecast_card.dart';
 
@@ -9,20 +11,19 @@ class BottomListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final title = typeElements == 'Hours'
-        ? '24-Hours Weather Forecast'
-        : '7-Day Weather Forecast';
-    final dataList = typeElements == 'Hours' ? snapshot.hourly : snapshot.daily;
+    final title =
+        typeElements == 'hours' ? 'listTitleHours'.tr() : 'listTitleDays'.tr();
+    final dataList = typeElements == 'hours' ? snapshot.hourly : snapshot.daily;
 
     final List forecastListNotFiltered = dataList
         .map((element) => Padding(
               padding: EdgeInsets.all(10),
-              child: typeElements == 'Hours'
+              child: typeElements == 'hours'
                   ? ForecastCard(forecastHourly: element)
                   : ForecastCard(forecastDaily: element),
             ))
         .toList();
-    final forecastList = typeElements == 'Hours'
+    final forecastList = typeElements == 'hours'
         ? forecastListNotFiltered.sublist(0, 24)
         : forecastListNotFiltered;
 

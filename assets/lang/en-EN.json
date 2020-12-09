@@ -1,0 +1,19 @@
+{
+    "days": "Days",
+    "hours": "Hours",
+    "pressure": "Pressure",
+    "wind": "Wind speed",
+    "humidity": "Humidity",
+    "feels": "Feels like",
+    "Mon": "Mon",
+    "Tue": "Tue",
+    "Wed": "Wed",
+    "Thu": "Thu",
+    "Fri": "Fri",
+    "Sat": "Sat",
+    "Sun": "Sun",
+    "listTitleDays": "7-day weather forecast",
+    "listTitleHours": "24-hours weather forecast",
+    "windDim": "m/s",
+    "pressureDim": "mm Hg"
+}

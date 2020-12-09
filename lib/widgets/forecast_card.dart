@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather_example/models/weather_forecast.dart';
 import 'package:weather_example/utilities/forecast_util.dart';
 
@@ -26,7 +28,8 @@ class _ForecastCardState extends State<ForecastCard> {
     DateTime date = DateTime.fromMillisecondsSinceEpoch(forecast.dt * 1000);
     var fullDate =
         isDaily ? Util.getFormattedDate(date) : Util.getFormattedTime(date);
-    var dayOfWeek = isDaily ? fullDate.split(',')[0] : fullDate.split(',')[0];
+    var dayOfWeek =
+        isDaily ? fullDate.split(',')[0].tr() : fullDate.split(',')[0];
     var tempMin = isDaily
         ? forecast.temp.min.toStringAsFixed(0)
         : forecast.temp.toStringAsFixed(0);
@@ -75,6 +78,13 @@ class _ForecastCardState extends State<ForecastCard> {
                         child: Image.network(
                           icon,
                           scale: 0.9,
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace stackTrace) {
+                            return SpinKitThreeBounce(
+                              color: Colors.white,
+                              size: 10,
+                            );
+                          },
                         ),
                       )
                     ],
@@ -98,12 +108,12 @@ class _ForecastCardState extends State<ForecastCard> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Util.getItemWithTitle(
-                                  'Pressure',
+                                  'pressure'.tr(),
                                   forecast.pressure,
-                                  'mm Hg',
+                                  'pressureDim'.tr(),
                                 ),
                                 Util.getItemWithTitle(
-                                  'Humidity',
+                                  'humidity'.tr(),
                                   forecast.humidity,
                                   '%',
                                 )
@@ -113,12 +123,12 @@ class _ForecastCardState extends State<ForecastCard> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Util.getItemWithTitle(
-                                  'Wind speed',
+                                  'wind'.tr(),
                                   forecast.windSpeed.toInt(),
-                                  'm/s',
+                                  'windDim'.tr(),
                                 ),
                                 Util.getItemWithTitle(
-                                  'Feels like',
+                                  'feels'.tr(),
                                   feelsLike,
                                   '°C',
                                 ),

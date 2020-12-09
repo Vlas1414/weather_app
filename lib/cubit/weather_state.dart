@@ -18,4 +18,14 @@ class WeatherLoadedState extends WeatherState {
   }) : assert(loadedWeather != null && loadedWeatherLocation != null);
 }
 
+class WeatherLoadedFromStorageState extends WeatherState {
+  WeatherForecast loadedWeather;
+  WeatherForecastLocation loadedWeatherLocation;
+
+  WeatherLoadedFromStorageState({
+    @required this.loadedWeather,
+    @required this.loadedWeatherLocation,
+  }) : assert(loadedWeather != null && loadedWeatherLocation != null);
+}
+
 class WeatherErrorState extends WeatherState {}
