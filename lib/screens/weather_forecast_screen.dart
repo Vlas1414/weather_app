@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_example/models/weather_forecast.dart';
 import 'package:weather_example/models/weather_forecast_daily.dart';
+import 'package:weather_example/utilities/custom_colors.dart';
 import 'package:weather_example/widgets/app_bar_view.dart';
 import 'package:weather_example/widgets/bottom_list_view.dart';
 import 'package:weather_example/widgets/detail_view.dart';
@@ -47,10 +48,7 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment(0, 1),
-            colors: [
-              const Color.fromARGB(255, 32, 123, 228),
-              const Color.fromARGB(255, 252, 177, 109)
-            ],
+            colors: [CustomColors.HEAD_OF_APP, CustomColors.BOTTOM_OF_APP],
             tileMode: TileMode.repeated,
           ),
         ),

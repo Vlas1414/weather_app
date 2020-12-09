@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:weather_example/screens/splash_screen.dart';
+import 'package:weather_example/utilities/custom_colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: const Color.fromARGB(255, 32, 123, 228),
+      statusBarColor: CustomColors.HEAD_OF_APP,
     ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,

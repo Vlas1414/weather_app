@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:weather_example/models/weather_forecast_daily.dart';
+import 'package:weather_example/utilities/custom_colors.dart';
 import 'package:weather_example/widgets/city_view.dart';
 
 AppBar appBarView(forecastObjectLocation, dropdownValue, updateDropdown) {
   List<String> itemsFilter = ['Days', 'Hours'];
 
   return AppBar(
-    backgroundColor: Color.fromARGB(255, 32, 123, 228),
+    backgroundColor: CustomColors.HEAD_OF_APP,
     elevation: 0,
     title: FutureBuilder<WeatherForecastLocation>(
       future: forecastObjectLocation,
