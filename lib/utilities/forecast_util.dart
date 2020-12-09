@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_example/utilities/custom_colors.dart';
 
 class Util {
   static String getFormattedDate(DateTime dateTime) {
@@ -55,6 +56,19 @@ class Util {
           ],
         )
       ],
+    );
+  }
+
+  static getAppTitle(double textSize) {
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(fontSize: textSize),
+        children: [
+          TextSpan(
+              text: 'W', style: TextStyle(color: CustomColors.BOTTOM_OF_APP)),
+          TextSpan(text: 'eather'),
+        ],
+      ),
     );
   }
 }

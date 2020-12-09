@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:weather_example/api/weather_api.dart';
+
+import 'package:weather_example/cubit/weather_cubit.dart';
 import 'package:weather_example/screens/weather_forecast_screen.dart';
+import 'package:weather_example/services/weather_repository.dart';
 import 'package:weather_example/utilities/custom_colors.dart';
+import 'package:weather_example/utilities/forecast_util.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -14,22 +17,20 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void getLocationData() async {
     try {
-      var weatherInfo = await WeatherApi().fetchWeatherForecast();
-      var weatherLocation =
-          await WeatherApi().fetchWeatherForecast(isGetLocation: true);
+      WeatherCubit _weatherCubit;
+      WeatherRepository _weatherRepository = WeatherRepository();
+      _weatherCubit = WeatherCubit(_weatherRepository);
+      _weatherCubit.fetchWeather();
 
       Timer(Duration(seconds: 3), () {
         Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => WeatherForecastScreen(
-                weatherInfo: weatherInfo,
-                weatherLocation: weatherLocation,
-              ),
-            ));
+          context,
+          MaterialPageRoute(
+              builder: (context) => WeatherForecastScreen(_weatherCubit)),
+        );
       });
     } catch (e) {
-      print('$e');
+      print('getLocationData error $e');
     }
   }
 
@@ -53,18 +54,9 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(fontSize: 50),
-                  children: [
-                    TextSpan(
-                        text: 'W',
-                        style: TextStyle(color: CustomColors.BOTTOM_OF_APP)),
-                    TextSpan(text: 'eather'),
-                  ],
-                ),
-              ),
+              Util.getAppTitle(50),
               SpinKitThreeBounce(
                 color: Colors.white,
                 size: 50,

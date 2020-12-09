@@ -3,7 +3,7 @@ import 'package:weather_example/models/weather_forecast.dart';
 import 'package:weather_example/widgets/forecast_card.dart';
 
 class BottomListView extends StatelessWidget {
-  final AsyncSnapshot<WeatherForecast> snapshot;
+  final WeatherForecast snapshot;
   final String typeElements;
   BottomListView({this.snapshot, this.typeElements});
 
@@ -12,8 +12,7 @@ class BottomListView extends StatelessWidget {
     final title = typeElements == 'Hours'
         ? '24-Hours Weather Forecast'
         : '7-Day Weather Forecast';
-    final dataList =
-        typeElements == 'Hours' ? snapshot.data.hourly : snapshot.data.daily;
+    final dataList = typeElements == 'Hours' ? snapshot.hourly : snapshot.daily;
 
     final List forecastListNotFiltered = dataList
         .map((element) => Padding(

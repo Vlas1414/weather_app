@@ -4,12 +4,12 @@ import 'package:weather_example/utilities/forecast_util.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DetailView extends StatelessWidget {
-  final AsyncSnapshot<WeatherForecast> snapshot;
+  final WeatherForecast snapshot;
   const DetailView({this.snapshot});
 
   @override
   Widget build(BuildContext context) {
-    var forecastList = snapshot.data.daily;
+    var forecastList = snapshot.daily;
     var pressure = forecastList[0].pressure * 0.750062;
     var humidity = forecastList[0].humidity;
     var wind = forecastList[0].windSpeed;
