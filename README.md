@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+<img src="https://github.com/Vlas1414/weather_app/raw/main/blob/Screenshot_2020_12_09_15_01_30_785_com_example_weather_example.jpg" alt="alt text" height="700">
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
