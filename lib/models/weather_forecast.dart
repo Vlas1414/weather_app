@@ -1,4 +1,4 @@
-import 'package:weather_example/utilities/constants.dart';
+import 'package:weather_example/constants/apiConstant.dart';
 
 class WeatherForecast {
   num lat;
@@ -26,13 +26,13 @@ class WeatherForecast {
     current =
         json['current'] != null ? new Current.fromJson(json['current']) : null;
     if (json['hourly'] != null) {
-      hourly = new List<Hourly>();
+      hourly = [];
       json['hourly'].forEach((v) {
         hourly.add(new Hourly.fromJson(v));
       });
     }
     if (json['daily'] != null) {
-      daily = new List<Daily>();
+      daily = [];
       json['daily'].forEach((v) {
         daily.add(new Daily.fromJson(v));
       });
@@ -105,7 +105,7 @@ class Current {
     windSpeed = json['wind_speed'];
     windDeg = json['wind_deg'];
     if (json['weather'] != null) {
-      weather = new List<Weather>();
+      weather = [];
       json['weather'].forEach((v) {
         weather.add(new Weather.fromJson(v));
       });
@@ -202,7 +202,7 @@ class Hourly {
     windSpeed = json['wind_speed'];
     windDeg = json['wind_deg'];
     if (json['weather'] != null) {
-      weather = new List<Weather>();
+      weather = [];
       json['weather'].forEach((v) {
         weather.add(new Weather.fromJson(v));
       });
@@ -231,7 +231,7 @@ class Hourly {
   }
 
   String getIconUrl() {
-    return Constants.WEATHER_IMAGES_URL + weather[0].icon + '.png';
+    return ApiConstant.wheatherImagesUrl + weather[0].icon + '.png';
   }
 }
 
@@ -283,7 +283,7 @@ class Daily {
     windSpeed = json['wind_speed'];
     windDeg = json['wind_deg'];
     if (json['weather'] != null) {
-      weather = new List<Weather>();
+      weather = [];
       json['weather'].forEach((v) {
         weather.add(new Weather.fromJson(v));
       });
@@ -321,7 +321,7 @@ class Daily {
   }
 
   String getIconUrl() {
-    return Constants.WEATHER_IMAGES_URL + weather[0].icon + '.png';
+    return ApiConstant.wheatherImagesUrl + weather[0].icon + '.png';
   }
 }
 

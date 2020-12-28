@@ -4,6 +4,8 @@ import 'package:weather_example/models/weather_forecast.dart';
 import 'package:weather_example/utilities/forecast_util.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+/// Дополнительная информация ячейки
+/// snapshot - объект информации о погоде
 class DetailView extends StatelessWidget {
   final WeatherForecast snapshot;
   const DetailView({this.snapshot});
@@ -19,12 +21,24 @@ class DetailView extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Util.getItemWithIcon(FontAwesomeIcons.thermometerThreeQuarters,
-              pressure.round(), 'pressureDim'.tr(), Axis.vertical),
           Util.getItemWithIcon(
-              FontAwesomeIcons.cloudRain, humidity, '%', Axis.vertical),
-          Util.getItemWithIcon(FontAwesomeIcons.wind, wind.toInt(),
-              'windDim'.tr(), Axis.vertical)
+            FontAwesomeIcons.thermometerThreeQuarters,
+            pressure.round(),
+            'pressureDim'.tr(),
+            Axis.vertical,
+          ),
+          Util.getItemWithIcon(
+            FontAwesomeIcons.cloudRain,
+            humidity,
+            '%',
+            Axis.vertical,
+          ),
+          Util.getItemWithIcon(
+            FontAwesomeIcons.wind,
+            wind.toInt(),
+            'windDim'.tr(),
+            Axis.vertical,
+          ),
         ],
       ),
     );

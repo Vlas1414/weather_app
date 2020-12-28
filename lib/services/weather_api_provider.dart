@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weather_example/constants/apiConstant.dart';
 
 import 'package:weather_example/models/weather_forecast.dart';
 import 'package:weather_example/models/weather_forecast_daily.dart';
-import 'package:weather_example/utilities/constants.dart';
 import 'package:weather_example/utilities/location.dart';
 
 class WeatherProvider {
@@ -37,7 +37,7 @@ class WeatherProvider {
 
   Future<http.Response> makeQuery(String path) async {
     var queryParameters = {
-      'APPID': Constants.WHEATHER_APP_ID,
+      'APPID': ApiConstant.wheatherAppId,
       'units': 'metric',
       'lat': location.latitude.toString(),
       'lon': location.longitude.toString(),
@@ -46,12 +46,12 @@ class WeatherProvider {
       'lang': currentLocale
     };
     // var queryParameters = {
-    //     'APPID': Constants.WHEATHER_APP_ID,
+    //     'APPID': Constants.wheatherAppId,
     //     'units': 'metric',
     //     'q': cityName
     //   };
     var uri = Uri.https(
-      Constants.WEATHER_BASE_URL_DOMAIN,
+      ApiConstant.wheatherBaseUrlDomain,
       path,
       queryParameters,
     );
@@ -65,7 +65,7 @@ class WeatherProvider {
   Future<WeatherForecast> fetchWeatherForecast() async {
     await location.getCurrentLocation();
 
-    var response = await makeQuery(Constants.WEATHER_FORECAST_PATH);
+    var response = await makeQuery(ApiConstant.wheatherForecastPath);
 
     if (response.statusCode == 200) {
       await setWeatherPref(response.body);
@@ -76,7 +76,7 @@ class WeatherProvider {
   }
 
   Future<WeatherForecastLocation> fetchWeatherLocation() async {
-    var response = await makeQuery(Constants.WEATHER_LOCATION_PATH);
+    var response = await makeQuery(ApiConstant.wheatherLocationPath);
 
     if (response.statusCode == 200) {
       await setWeatherLocationPref(response.body);

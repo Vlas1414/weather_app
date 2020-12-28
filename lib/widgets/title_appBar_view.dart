@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_example/constants/textStyleConstant.dart';
 
 import 'package:weather_example/cubit/weather_cubit.dart';
 import 'package:weather_example/cubit/weather_state.dart';
@@ -17,12 +18,8 @@ class TitleAppBarView extends StatelessWidget {
               children: [
                 Text(
                   '$city',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24.0,
-                    color: Colors.white,
-                  ),
-                )
+                  style: TextStyleConstant.townName,
+                ),
               ],
             ),
           );

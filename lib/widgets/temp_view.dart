@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weather_example/constants/textStyleConstant.dart';
 import 'package:weather_example/models/weather_forecast.dart';
 
+/// Текущая температура и описание погоды
+/// snapshot - объект погоды
 class TempView extends StatelessWidget {
   final WeatherForecast snapshot;
   const TempView({this.snapshot});
@@ -10,23 +13,20 @@ class TempView extends StatelessWidget {
     var forecastList = snapshot.daily;
     var temp = forecastList[0].temp.day.toStringAsFixed(0);
     var description = forecastList[0].weather[0].description.toUpperCase();
+
     return Container(
       child: Column(
         children: [
           Text(
             '$temp °C',
-            style: TextStyle(
-              fontSize: 54,
-              color: Colors.white,
-            ),
+            style: TextStyleConstant.textStateOfWeatherMain,
           ),
           Text(
             '$description',
-            style: TextStyle(
+            style: TextStyleConstant.textStateOfWeatherMain.copyWith(
               fontSize: 18,
-              color: Colors.white,
             ),
-          )
+          ),
         ],
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_example/utilities/custom_colors.dart';
+import 'package:weather_example/constants/colorsConstant.dart';
+import 'package:weather_example/constants/stringsConstant.dart';
+import 'package:weather_example/constants/textStyleConstant.dart';
 
 class Util {
   static String getFormattedDate(DateTime dateTime) {
@@ -17,16 +19,22 @@ class Util {
       crossAxisAlignment: WrapCrossAlignment.center,
       direction: diraction,
       children: [
-        Icon(iconData, color: Colors.white, size: 28),
-        SizedBox(height: 10, width: 10),
+        Icon(
+          iconData,
+          color: ColorsConstant.white,
+          size: 28,
+        ),
+        const SizedBox(height: 10, width: 10),
         Text(
           '$value',
-          style: TextStyle(fontSize: 20, color: Colors.white),
+          style: TextStyleConstant.valuesDetails,
         ),
-        SizedBox(height: 10, width: 5),
+        const SizedBox(height: 10, width: 5),
         Text(
           '$units',
-          style: TextStyle(fontSize: 15, color: Colors.white),
+          style: TextStyleConstant.valuesDetails.copyWith(
+            fontSize: 15,
+          ),
         ),
       ],
     );
@@ -38,23 +46,24 @@ class Util {
       children: [
         Text(
           title,
-          style: TextStyle(
-              fontSize: 12, color: Color.fromARGB(150, 255, 255, 255)),
+          style: TextStyleConstant.titlesDetails,
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Row(
           children: [
             Text(
               '$value',
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyleConstant.valuesDetails,
             ),
-            SizedBox(height: 10, width: 5),
+            const SizedBox(height: 10, width: 5),
             Text(
               '$units',
-              style: TextStyle(fontSize: 15, color: Colors.white),
+              style: TextStyleConstant.valuesDetails.copyWith(
+                fontSize: 15,
+              ),
             ),
           ],
-        )
+        ),
       ],
     );
   }
@@ -65,8 +74,12 @@ class Util {
         style: TextStyle(fontSize: textSize),
         children: [
           TextSpan(
-              text: 'W', style: TextStyle(color: CustomColors.BOTTOM_OF_APP)),
-          TextSpan(text: 'eather'),
+            text: StringsConstant.firstPartAppLogo,
+            style: TextStyleConstant.firstLetterSplash,
+          ),
+          TextSpan(
+            text: StringsConstant.secondPartAppLogo,
+          ),
         ],
       ),
     );

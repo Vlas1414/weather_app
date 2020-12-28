@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/services.dart';
+import 'package:weather_example/constants/colorsConstant.dart';
 import 'package:weather_example/screens/splash_screen.dart';
-import 'package:weather_example/utilities/custom_colors.dart';
 
 void main() {
   runApp(EasyLocalization(
-    path: "assets/lang",
+    path: 'assets/lang',
     saveLocale: true,
     supportedLocales: [
       Locale('ru', 'RU'),
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: CustomColors.HEAD_OF_APP,
+      statusBarColor: ColorsConstant.headBackgraund,
     ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,

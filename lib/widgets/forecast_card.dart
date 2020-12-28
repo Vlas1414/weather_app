@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:weather_example/constants/colorsConstant.dart';
+import 'package:weather_example/constants/textStyleConstant.dart';
 import 'package:weather_example/models/weather_forecast.dart';
 import 'package:weather_example/utilities/forecast_util.dart';
 
+/// Карточка дополнительной информации
+/// forecastDaily - погода на неделю
+/// forecastHourly - погода по часам
 class ForecastCard extends StatefulWidget {
   final Daily forecastDaily;
   final Hourly forecastHourly;
@@ -38,109 +43,113 @@ class _ForecastCardState extends State<ForecastCard> {
     var icon = forecast.getIconUrl();
 
     return FlatButton(
-      padding: EdgeInsets.symmetric(horizontal: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 0),
       onPressed: () {
         setState(() {
           isShowDetail = !isShowDetail;
         });
       },
       child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            color: Color.fromARGB(20, 255, 255, 255),
-          ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        decoration: const BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+          color: ColorsConstant.transparentWhite20,
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  dayOfWeek,
+                  style: TextStyleConstant.titleCardDetails,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      '$tempMin °C',
+                      style: TextStyleConstant.titleCardDetails.copyWith(
+                        fontSize: 30,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      height: 60,
+                      width: 60,
+                      child: Image.network(
+                        icon,
+                        scale: 0.9,
+                        errorBuilder: (
+                          BuildContext context,
+                          Object exception,
+                          StackTrace stackTrace,
+                        ) {
+                          return SpinKitThreeBounce(
+                            color: ColorsConstant.white,
+                            size: 10,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              height: isShowDetail ? 110 : 0,
+              child: ListView(
+                physics: NeverScrollableScrollPhysics(),
                 children: [
-                  Text(
-                    dayOfWeek,
-                    style: TextStyle(fontSize: 25, color: Colors.white),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        '$tempMin °C',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        height: 60,
-                        width: 60,
-                        child: Image.network(
-                          icon,
-                          scale: 0.9,
-                          errorBuilder: (BuildContext context, Object exception,
-                              StackTrace stackTrace) {
-                            return SpinKitThreeBounce(
-                              color: Colors.white,
-                              size: 10,
-                            );
-                          },
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-              AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
-                  height: isShowDetail ? 110 : 0,
-                  child: ListView(
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      Container(
-                        height: 95,
-                        padding: EdgeInsets.only(right: 70),
-                        child: Column(
+                  Container(
+                    height: 95,
+                    padding: const EdgeInsets.only(right: 70),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Util.getItemWithTitle(
-                                  'pressure'.tr(),
-                                  forecast.pressure,
-                                  'pressureDim'.tr(),
-                                ),
-                                Util.getItemWithTitle(
-                                  'humidity'.tr(),
-                                  forecast.humidity,
-                                  '%',
-                                )
-                              ],
+                            Util.getItemWithTitle(
+                              'pressure'.tr(),
+                              forecast.pressure,
+                              'pressureDim'.tr(),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Util.getItemWithTitle(
-                                  'wind'.tr(),
-                                  forecast.windSpeed.toInt(),
-                                  'windDim'.tr(),
-                                ),
-                                Util.getItemWithTitle(
-                                  'feels'.tr(),
-                                  feelsLike,
-                                  '°C',
-                                ),
-                              ],
+                            Util.getItemWithTitle(
+                              'humidity'.tr(),
+                              forecast.humidity,
+                              '%',
                             ),
                           ],
                         ),
-                      )
-                    ],
-                  ))
-            ],
-          )),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Util.getItemWithTitle(
+                              'wind'.tr(),
+                              forecast.windSpeed.toInt(),
+                              'windDim'.tr(),
+                            ),
+                            Util.getItemWithTitle(
+                              'feels'.tr(),
+                              feelsLike,
+                              '°C',
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

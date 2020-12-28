@@ -1,42 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:weather_example/constants/colorsConstant.dart';
+import 'package:weather_example/constants/stringsConstant.dart';
 
 import 'package:weather_example/cubit/weather_cubit.dart';
 import 'package:weather_example/cubit/weather_state.dart';
-import 'package:weather_example/utilities/custom_colors.dart';
 import 'package:weather_example/widgets/bottom_list_view.dart';
 import 'package:weather_example/widgets/detail_view.dart';
 import 'package:weather_example/widgets/temp_view.dart';
 
+/// Виджет отображения текущей погоды
+/// dropdownValue - отображать дни либо часы
 class BodyView extends StatelessWidget {
   final dropdownValue;
   BodyView({this.dropdownValue});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment(0, 1),
-            colors: [CustomColors.HEAD_OF_APP, CustomColors.BOTTOM_OF_APP],
-            tileMode: TileMode.repeated,
-          ),
+      height: double.infinity,
+      decoration: const BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          end: const Alignment(0, 1),
+          colors: [
+            ColorsConstant.headBackgraund,
+            ColorsConstant.bottomBackgraund,
+          ],
+          tileMode: TileMode.repeated,
         ),
-        child:
-            BlocBuilder<WeatherCubit, WeatherState>(builder: (context, state) {
+      ),
+      child: BlocBuilder<WeatherCubit, WeatherState>(
+        builder: (context, state) {
           Widget listWidget(loadedWeather) {
             return ListView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               children: [
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 TempView(snapshot: loadedWeather),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 DetailView(snapshot: loadedWeather),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 BottomListView(
-                    snapshot: loadedWeather, typeElements: dropdownValue)
+                  snapshot: loadedWeather,
+                  typeElements: dropdownValue,
+                ),
               ],
             );
           }
@@ -45,10 +54,10 @@ class BodyView extends StatelessWidget {
             return listWidget(state.loadedWeather);
           }
           if (state is WeatherLoadedFromStorageState) {
-            final snackBar = SnackBar(
-                backgroundColor: Colors.red,
-                content:
-                    Text('There is no connection. Previous result loaded!'));
+            final snackBar = const SnackBar(
+              backgroundColor: ColorsConstant.red,
+              content: const Text(StringsConstant.allertError),
+            );
 
             // Scaffold.of(context).showSnackBar(snackBar);
             WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -61,9 +70,11 @@ class BodyView extends StatelessWidget {
             return listWidget(state.loadedWeather);
           }
           return SpinKitThreeBounce(
-            color: Colors.white,
+            color: ColorsConstant.white,
             size: 50,
           );
-        }));
+        },
+      ),
+    );
   }
 }
