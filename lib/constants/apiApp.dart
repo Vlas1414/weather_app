@@ -1,4 +1,4 @@
-class ApiConstant {
+class ApiApp {
   static const String wheatherAppId = '1369dd6b5ae78fc9952261ab9aa236b4';
   static const String wheatherBaseScheme = 'https://';
   static const String wheatherBaseUrlDomain = 'api.openweathermap.org';

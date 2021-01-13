@@ -1,4 +1,4 @@
-import 'package:weather_example/constants/apiConstant.dart';
+import 'package:weather_example/constants/apiApp.dart';
 
 class WeatherForecast {
   num lat;
@@ -231,7 +231,7 @@ class Hourly {
   }
 
   String getIconUrl() {
-    return ApiConstant.wheatherImagesUrl + weather[0].icon + '.png';
+    return ApiApp.wheatherImagesUrl + weather[0].icon + '.png';
   }
 }
 
@@ -321,7 +321,7 @@ class Daily {
   }
 
   String getIconUrl() {
-    return ApiConstant.wheatherImagesUrl + weather[0].icon + '.png';
+    return ApiApp.wheatherImagesUrl + weather[0].icon + '.png';
   }
 }
 

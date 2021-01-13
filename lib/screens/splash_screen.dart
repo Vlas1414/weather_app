@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:weather_example/constants/colorsConstant.dart';
+import 'package:weather_example/constants/colorsApp.dart';
 
 import 'package:weather_example/cubit/weather_cubit.dart';
 import 'package:weather_example/screens/weather_forecast_screen.dart';
@@ -64,8 +64,8 @@ class _SplashScreenState extends State<SplashScreen> {
             begin: Alignment.topCenter,
             end: Alignment(0, 1),
             colors: [
-              ColorsConstant.headBackgraund,
-              ColorsConstant.bottomBackgraund,
+              ColorsApp.headBackgraund,
+              ColorsApp.bottomBackgraund,
             ],
             tileMode: TileMode.repeated,
           ),

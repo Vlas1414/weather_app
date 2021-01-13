@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather_example/constants/textStyleConstant.dart';
+import 'package:weather_example/constants/colorsApp.dart';
+import 'package:weather_example/constants/textStyleApp.dart';
 import 'package:weather_example/models/weather_forecast.dart';
 
 /// Текущая температура и описание погоды
@@ -19,12 +20,14 @@ class TempView extends StatelessWidget {
         children: [
           Text(
             '$temp °C',
-            style: TextStyleConstant.textStateOfWeatherMain,
+            style: TextStyleApp.size54.copyWith(
+              color: ColorsApp.white,
+            ),
           ),
           Text(
             '$description',
-            style: TextStyleConstant.textStateOfWeatherMain.copyWith(
-              fontSize: 18,
+            style: TextStyleApp.size18.copyWith(
+              color: ColorsApp.white,
             ),
           ),
         ],

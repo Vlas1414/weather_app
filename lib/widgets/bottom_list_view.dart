@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:weather_example/constants/colorsConstant.dart';
-import 'package:weather_example/constants/textStyleConstant.dart';
+import 'package:weather_example/constants/colorsApp.dart';
+import 'package:weather_example/constants/textStyleApp.dart';
 
 import 'package:weather_example/models/weather_forecast.dart';
 import 'package:weather_example/widgets/forecast_card.dart';
@@ -39,7 +39,9 @@ class BottomListView extends StatelessWidget {
       children: [
         Text(
           title.toUpperCase(),
-          style: TextStyleConstant.textStateOfWeather,
+          style: TextStyleApp.size20Bold.copyWith(
+            color: ColorsApp.white,
+          ),
         ),
         Container(
           child: Column(children: forecastList),

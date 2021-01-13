@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:weather_example/constants/colorsConstant.dart';
-import 'package:weather_example/constants/textStyleConstant.dart';
+import 'package:weather_example/constants/colorsApp.dart';
+import 'package:weather_example/constants/textStyleApp.dart';
 import 'package:weather_example/models/weather_forecast.dart';
 import 'package:weather_example/utilities/forecast_util.dart';
 
@@ -53,7 +53,7 @@ class _ForecastCardState extends State<ForecastCard> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: const BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(20)),
-          color: ColorsConstant.transparentWhite20,
+          color: ColorsApp.transparentWhite20,
         ),
         child: Column(
           children: [
@@ -63,14 +63,16 @@ class _ForecastCardState extends State<ForecastCard> {
               children: [
                 Text(
                   dayOfWeek,
-                  style: TextStyleConstant.titleCardDetails,
+                  style: TextStyleApp.size25.copyWith(
+                    color: ColorsApp.white,
+                  ),
                 ),
                 Row(
                   children: [
                     Text(
                       '$tempMin °C',
-                      style: TextStyleConstant.titleCardDetails.copyWith(
-                        fontSize: 30,
+                      style: TextStyleApp.size30.copyWith(
+                        color: ColorsApp.white,
                       ),
                     ),
                     const SizedBox(
@@ -88,7 +90,7 @@ class _ForecastCardState extends State<ForecastCard> {
                           StackTrace stackTrace,
                         ) {
                           return SpinKitThreeBounce(
-                            color: ColorsConstant.white,
+                            color: ColorsApp.white,
                             size: 10,
                           );
                         },

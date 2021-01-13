@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:weather_example/constants/colorsConstant.dart';
-import 'package:weather_example/constants/textStyleConstant.dart';
+import 'package:weather_example/constants/colorsApp.dart';
+import 'package:weather_example/constants/textStyleApp.dart';
 import 'package:weather_example/cubit/weather_cubit.dart';
 import 'package:weather_example/widgets/body_view.dart';
 import 'package:weather_example/widgets/title_appBar_view.dart';
@@ -31,7 +31,7 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
       create: (context) => widget.weatherCubit,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: ColorsConstant.headBackgraund,
+          backgroundColor: ColorsApp.headBackgraund,
           elevation: 0,
           title: TitleAppBarView(),
           actions: [
@@ -39,7 +39,7 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
               padding: const EdgeInsets.only(right: 8.0),
               child: DropdownButton<String>(
                 value: dropdownValue,
-                icon: Icon(Icons.filter_alt, color: ColorsConstant.white),
+                icon: Icon(Icons.filter_alt, color: ColorsApp.white),
                 iconSize: 24,
                 elevation: 16,
                 underline: Container(height: 0),
@@ -54,7 +54,9 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                       padding: const EdgeInsets.only(top: 14),
                       child: Text(
                         item.tr(),
-                        style: TextStyleConstant.dropDownTextSelected,
+                        style: TextStyleApp.size15.copyWith(
+                          color: ColorsApp.white,
+                        ),
                       ),
                     );
                   }).toList();
@@ -66,7 +68,9 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                       value: value,
                       child: Text(
                         value.tr(),
-                        style: TextStyleConstant.dropDownTextSelected,
+                        style: TextStyleApp.size16.copyWith(
+                          color: ColorsApp.black,
+                        ),
                       ),
                     );
                   },

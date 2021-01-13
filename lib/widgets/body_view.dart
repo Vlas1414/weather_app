@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:weather_example/constants/colorsConstant.dart';
-import 'package:weather_example/constants/stringsConstant.dart';
+import 'package:weather_example/constants/colorsApp.dart';
+import 'package:weather_example/constants/stringsApp.dart';
 
 import 'package:weather_example/cubit/weather_cubit.dart';
 import 'package:weather_example/cubit/weather_state.dart';
@@ -25,8 +25,8 @@ class BodyView extends StatelessWidget {
           begin: Alignment.topCenter,
           end: const Alignment(0, 1),
           colors: [
-            ColorsConstant.headBackgraund,
-            ColorsConstant.bottomBackgraund,
+            ColorsApp.headBackgraund,
+            ColorsApp.bottomBackgraund,
           ],
           tileMode: TileMode.repeated,
         ),
@@ -55,8 +55,8 @@ class BodyView extends StatelessWidget {
           }
           if (state is WeatherLoadedFromStorageState) {
             final snackBar = const SnackBar(
-              backgroundColor: ColorsConstant.red,
-              content: const Text(StringsConstant.allertError),
+              backgroundColor: ColorsApp.red,
+              content: const Text(StringsApp.allertError),
             );
 
             // Scaffold.of(context).showSnackBar(snackBar);
@@ -70,7 +70,7 @@ class BodyView extends StatelessWidget {
             return listWidget(state.loadedWeather);
           }
           return SpinKitThreeBounce(
-            color: ColorsConstant.white,
+            color: ColorsApp.white,
             size: 50,
           );
         },

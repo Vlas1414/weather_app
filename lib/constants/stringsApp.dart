@@ -1,4 +1,4 @@
-class StringsConstant {
+class StringsApp {
   static const String firstPartAppLogo = 'W';
   static const String secondPartAppLogo = 'eather';
   static const String allertError =

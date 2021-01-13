@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_example/constants/colorsConstant.dart';
-import 'package:weather_example/constants/stringsConstant.dart';
-import 'package:weather_example/constants/textStyleConstant.dart';
+import 'package:weather_example/constants/colorsApp.dart';
+import 'package:weather_example/constants/stringsApp.dart';
+import 'package:weather_example/constants/textStyleApp.dart';
 
 class Util {
   static String getFormattedDate(DateTime dateTime) {
@@ -21,19 +21,21 @@ class Util {
       children: [
         Icon(
           iconData,
-          color: ColorsConstant.white,
+          color: ColorsApp.white,
           size: 28,
         ),
         const SizedBox(height: 10, width: 10),
         Text(
           '$value',
-          style: TextStyleConstant.valuesDetails,
+          style: TextStyleApp.size20.copyWith(
+            color: ColorsApp.white,
+          ),
         ),
         const SizedBox(height: 10, width: 5),
         Text(
           '$units',
-          style: TextStyleConstant.valuesDetails.copyWith(
-            fontSize: 15,
+          style: TextStyleApp.size15.copyWith(
+            color: ColorsApp.white,
           ),
         ),
       ],
@@ -46,20 +48,24 @@ class Util {
       children: [
         Text(
           title,
-          style: TextStyleConstant.titlesDetails,
+          style: TextStyleApp.size12.copyWith(
+            color: ColorsApp.transparentWhite150,
+          ),
         ),
         const SizedBox(height: 5),
         Row(
           children: [
             Text(
               '$value',
-              style: TextStyleConstant.valuesDetails,
+              style: TextStyleApp.size20.copyWith(
+                color: ColorsApp.white,
+              ),
             ),
             const SizedBox(height: 10, width: 5),
             Text(
               '$units',
-              style: TextStyleConstant.valuesDetails.copyWith(
-                fontSize: 15,
+              style: TextStyleApp.size15.copyWith(
+                color: ColorsApp.white,
               ),
             ),
           ],
@@ -74,11 +80,13 @@ class Util {
         style: TextStyle(fontSize: textSize),
         children: [
           TextSpan(
-            text: StringsConstant.firstPartAppLogo,
-            style: TextStyleConstant.firstLetterSplash,
+            text: StringsApp.firstPartAppLogo,
+            style: TextStyleApp.size54.copyWith(
+              color: ColorsApp.bottomBackgraund,
+            ),
           ),
           TextSpan(
-            text: StringsConstant.secondPartAppLogo,
+            text: StringsApp.secondPartAppLogo,
           ),
         ],
       ),
