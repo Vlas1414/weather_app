@@ -4,7 +4,7 @@ import 'package:weather_example/constants/colorsApp.dart';
 import 'package:weather_example/constants/textStyleApp.dart';
 
 import 'package:weather_example/models/weather_forecast.dart';
-import 'package:weather_example/widgets/forecast_card.dart';
+import 'package:weather_example/ui/widgets/forecast_card.dart';
 
 /// Список погоды по дням либо часам
 /// snapshot - объект погоды

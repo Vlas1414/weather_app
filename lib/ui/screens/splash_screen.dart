@@ -6,9 +6,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:weather_example/constants/colorsApp.dart';
 
 import 'package:weather_example/cubit/weather_cubit.dart';
-import 'package:weather_example/screens/weather_forecast_screen.dart';
+import 'package:weather_example/ui/screens/weather_forecast_screen.dart';
 import 'package:weather_example/services/weather_repository.dart';
-import 'package:weather_example/utilities/forecast_util.dart';
+import 'package:weather_example/ui/utils/forecast_util.dart';
 
 /// Экран загрузки
 class SplashScreen extends StatefulWidget {

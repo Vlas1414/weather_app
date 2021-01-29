@@ -5,7 +5,7 @@ import 'package:weather_example/constants/textStyleApp.dart';
 
 import 'package:weather_example/cubit/weather_cubit.dart';
 import 'package:weather_example/cubit/weather_state.dart';
-import 'package:weather_example/utilities/forecast_util.dart';
+import 'package:weather_example/ui/utils/forecast_util.dart';
 
 class TitleAppBarView extends StatelessWidget {
   @override

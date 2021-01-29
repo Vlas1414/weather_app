@@ -4,8 +4,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:weather_example/constants/colorsApp.dart';
 import 'package:weather_example/constants/textStyleApp.dart';
 import 'package:weather_example/cubit/weather_cubit.dart';
-import 'package:weather_example/widgets/body_view.dart';
-import 'package:weather_example/widgets/title_appBar_view.dart';
+import 'package:weather_example/ui/widgets/body_view.dart';
+import 'package:weather_example/ui/widgets/title_appBar_view.dart';
 
 /// Главный экран
 /// weatherCubit - state bloc

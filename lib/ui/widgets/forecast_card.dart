@@ -4,7 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather_example/constants/colorsApp.dart';
 import 'package:weather_example/constants/textStyleApp.dart';
 import 'package:weather_example/models/weather_forecast.dart';
-import 'package:weather_example/utilities/forecast_util.dart';
+import 'package:weather_example/ui/utils/forecast_util.dart';
 
 /// Карточка дополнительной информации
 /// forecastDaily - погода на неделю

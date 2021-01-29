@@ -6,7 +6,7 @@ import 'package:weather_example/constants/apiApp.dart';
 
 import 'package:weather_example/models/weather_forecast.dart';
 import 'package:weather_example/models/weather_forecast_daily.dart';
-import 'package:weather_example/utilities/location.dart';
+import 'package:weather_example/services/location.dart';
 
 class WeatherProvider {
   SharedPreferences _prefs;

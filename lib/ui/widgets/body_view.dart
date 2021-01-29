@@ -6,9 +6,9 @@ import 'package:weather_example/constants/stringsApp.dart';
 
 import 'package:weather_example/cubit/weather_cubit.dart';
 import 'package:weather_example/cubit/weather_state.dart';
-import 'package:weather_example/widgets/bottom_list_view.dart';
-import 'package:weather_example/widgets/detail_view.dart';
-import 'package:weather_example/widgets/temp_view.dart';
+import 'package:weather_example/ui/widgets/bottom_list_view.dart';
+import 'package:weather_example/ui/widgets/detail_view.dart';
+import 'package:weather_example/ui/widgets/temp_view.dart';
 
 /// Виджет отображения текущей погоды
 /// dropdownValue - отображать дни либо часы
